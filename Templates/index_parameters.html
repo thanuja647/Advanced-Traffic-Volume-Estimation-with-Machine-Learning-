@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Volume Prediction</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('static/traffic.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            width: 45%;
+            max-width: 500px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        select {
+            appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        input:hover,
+        input:focus,
+        select:hover,
+        select:focus {
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        select option {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+
+        select:hover option:hover {
+            background: #ffcc00;
+            color: black;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ff7e5f;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚦 Traffic Volume Prediction 🚗</h1>
+        <form action="/predict" method="post">
+            <label>📅 Select Date:</label>
+            <input type="date" name="date" min="2012-01-11" max="2025-12-09" required>
+
+            <label>⏰ Select Time:</label>
+            <input type="time" name="time" required>
+
+            <label>🌡 Temperature (°C):</label>
+            <input type="number" name="temp" step="0.1" min="-50" max="50" required>
+
+            <label>🌧 Rain (mm):</label>
+            <input type="number" name="rain" step="0.1" min="0" required>
+
+            <label>❄ Snow (mm):</label>
+            <input type="number" name="snow" step="0.1" min="0" required>
+
+            <label>🎉 Holiday:</label>
+            <select name="holiday">
+                <option value="None">None</option>
+                <option value="Columbus Day">Columbus Day</option>
+                <option value="Veterans Day">Veterans Day</option>
+                <option value="Thanksgiving Day">Thanksgiving Day</option>
+                <option value="Christmas Day">Christmas Day</option>
+                <option value="New Year's Day">New Year's Day</option>
+                <option value="Washington's Birthday">Washington's Birthday</option>
+                <option value="Memorial Day">Memorial Day</option>
+                <option value="Independence Day">Independence Day</option>
+                <option value="State Fair">State Fair</option>
+                <option value="Labor Day">Labor Day</option>
+                <option value="Martin Luther King Jr Day">Martin Luther King Jr. Day</option>
+            </select>
+
+            <label>🌤 Weather Condition:</label>
+            <select name="weather">
+                <option value="Clouds">Clouds</option>
+                <option value="Clear">Clear</option>
+                <option value="Rain">Rain</option>
+                <option value="Drizzle">Drizzle</option>
+                <option value="Mist">Mist</option>
+                <option value="Haze">Haze</option>
+                <option value="Fog">Fog</option>
+                <option value="Thunderstorm">Thunderstorm</option>
+                <option value="Snow">Snow</option>
+                <option value="Squall">Squall</option>
+                <option value="Smoke">Smoke</option>
+            </select>
+
+            <button type="submit">🚀 Predict</button>
+        </form>
+    </div>
+</body>
+
+</html>
